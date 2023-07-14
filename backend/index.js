@@ -40,7 +40,7 @@ app.post("/cafes", (req, res) => {
 app.post("/restaurants", (req, res) => {
   const body = req.body;
   const id = restaurants.length;
-  cafes.push({ ...body, id });
+  restaurants.push({ ...body, id });
 });
 
 app.delete('/cafes/{id}', (req, res) => {
@@ -51,7 +51,7 @@ app.delete('/cafes/{id}', (req, res) => {
 
 app.delete('/restaurants/{id}', (req, res) => {
   const id = req.params.id;
-  cafes = restaurants.filter(r => r.id !== id);
+  restaurants = restaurants.filter(r => r.id !== id);
   return res.end();
 });
 
