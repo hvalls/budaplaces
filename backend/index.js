@@ -6,7 +6,7 @@ const cors = require('cors')
 app.use(bodyParser.json());
 app.use(cors());
 
-const cafes = [
+let cafes = [
   { id: 1, name: 'Montage', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
   { id: 2, name: 'Arch&Beans', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
   { id: 3, name: 'Madal', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
@@ -14,7 +14,7 @@ const cafes = [
   { id: 5, name: 'Magveto', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
 ];
 
-const restaurants = [
+let restaurants = [
   { id: 1, name: 'Menza', pictureUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMKwQpz2Fr7H-8-FN4akSRgYiSAV28a647wA&usqp=CAU' },
   { id: 2, name: 'Szek', pictureUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMKwQpz2Fr7H-8-FN4akSRgYiSAV28a647wA&usqp=CAU' },
   { id: 3, name: 'Szeraj', pictureUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMKwQpz2Fr7H-8-FN4akSRgYiSAV28a647wA&usqp=CAU' },
@@ -41,6 +41,18 @@ app.post("/restaurants", (req, res) => {
   const body = req.body;
   const id = restaurants.length;
   cafes.push({ ...body, id });
+});
+
+app.delete('/cafes/{id}', (req, res) => {
+  const id = req.params.id;
+  cafes = cafes.filter(c => c.id !== id);
+  return res.end();
+});
+
+app.delete('/restaurants/{id}', (req, res) => {
+  const id = req.params.id;
+  cafes = restaurants.filter(r => r.id !== id);
+  return res.end();
 });
 
 const port = 8080;
