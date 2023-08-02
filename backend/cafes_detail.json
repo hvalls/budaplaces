@@ -1,0 +1,87 @@
+{
+  "1": {
+    "rating": 4,
+    "comments": [
+      {
+        "id": 1,
+        "author": "Feyza",
+        "postedOn": "17/06/2023",
+        "text": "yarrami ye 🤓"
+      },
+      {
+        "id": 2,
+        "author": "Pancracio",
+        "postedOn": "21/06/2023",
+        "text": "It's okay"
+      }
+    ]
+  },
+  "2": {
+    "rating": 4,
+    "comments": [
+      {
+        "id": 1,
+        "author": "Feyza",
+        "postedOn": "17/06/2023",
+        "text": "yarrami ye 🤓"
+      },
+      {
+        "id": 2,
+        "author": "Pancracio",
+        "postedOn": "21/06/2023",
+        "text": "It's okay"
+      }
+    ]
+  },
+  "3": {
+    "rating": 4,
+    "comments": [
+      {
+        "id": 1,
+        "author": "Feyza",
+        "postedOn": "17/06/2023",
+        "text": "yarrami ye 🤓"
+      },
+      {
+        "id": 2,
+        "author": "Pancracio",
+        "postedOn": "21/06/2023",
+        "text": "It's okay"
+      }
+    ]
+  },
+  "4": {
+    "rating": 4,
+    "comments": [
+      {
+        "id": 1,
+        "author": "Feyza",
+        "postedOn": "17/06/2023",
+        "text": "yarrami ye 🤓"
+      },
+      {
+        "id": 2,
+        "author": "Pancracio",
+        "postedOn": "21/06/2023",
+        "text": "It's okay"
+      }
+    ]
+  },
+  "5": {
+    "rating": 4,
+    "comments": [
+      {
+        "id": 1,
+        "author": "Feyza",
+        "postedOn": "17/06/2023",
+        "text": "yarrami ye 🤓"
+      },
+      {
+        "id": 2,
+        "author": "Pancracio",
+        "postedOn": "21/06/2023",
+        "text": "It's okay"
+      }
+    ]
+  }
+}

@@ -6,6 +6,9 @@ const cors = require('cors')
 app.use(bodyParser.json());
 app.use(cors());
 
+const cafesDetail = require('./cafes_detail.json');
+const restaurantsDetail = require('./restaurants_detail.json');
+
 let cafes = [
   { id: 1, name: 'Montage', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
   { id: 2, name: 'Arch&Beans', pictureUrl: 'https://www.lasinfoniadelreyhotel.com/img/gallery/coffee-house.gif' },
@@ -43,13 +46,20 @@ app.post("/restaurants", (req, res) => {
   restaurants.push({ ...body, id });
 });
 
-app.delete('/cafes/{id}', (req, res) => {
+app.get('/cafes/:id', (req, res) => {
+  const cafe = cafes.find(c => c.id === parseInt(req.params.id));
+  const detail = cafesDetail[cafe.id];
+  const response = { ...cafe, ...detail };
+  return res.json(response);
+});
+
+app.delete('/cafes/:id', (req, res) => {
   const id = req.params.id;
   cafes = cafes.filter(c => c.id !== id);
   return res.end();
 });
 
-app.delete('/restaurants/{id}', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id;
   restaurants = restaurants.filter(r => r.id !== id);
   return res.end();
