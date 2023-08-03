@@ -21,10 +21,10 @@ const SideBar = () => {
     <SideBarBox>
       <Title>Budaplaces</Title>
       <MenuItem onClick={handleOpenCafes}>
-        <MenuText hasUnderline={!isRestaurant}>Cafés</MenuText>
+        <MenuText hasUnderline={!isRestaurant ? "true" : "false"}>Cafés</MenuText>
       </MenuItem>
       <MenuItem onClick={handleOpenRestaurants}>
-        <MenuText hasUnderline={isRestaurant}>Restaurants</MenuText>
+        <MenuText hasUnderline={isRestaurant ? "true" : "false"}>Restaurants</MenuText>
       </MenuItem>
     </SideBarBox>
   );

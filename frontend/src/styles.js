@@ -60,7 +60,7 @@ export const MenuItem = styled.div`
 
 export const MenuText = styled.h4`
   ${({ hasUnderline }) => ({
-    textDecoration: hasUnderline ? "underline" : "none",
+    textDecoration: hasUnderline === "true" ? "underline" : "none",
   })}
 `;
 
@@ -127,7 +127,8 @@ export const SearchPlace = styled.input`
   }
 `;
 
-export const PlaceNameText = styled.text`
+export const PlaceNameText = styled.h4`
+  margin: 0;
   color: white;
 `;
 
@@ -170,9 +171,9 @@ export const PlaceDetailImage = styled.img`
   }
 `;
 
-export const PlaceNameDetailText = styled.text`
+export const PlaceNameDetailText = styled.h4`
   position: relative;
-  margin-left: 320px;
+  margin: 0 0 0 320px;
   font-size: 25px;
   font-weight: bold;
 `;
@@ -183,7 +184,8 @@ export const CommentsBox = styled.div`
   width: 155vh;
 `;
 
-export const CommentsHeader = styled.text`
+export const CommentsHeader = styled.h4`
+margin: 0;
   font-size: 25px;
   font-weight: bold;
 `;
@@ -193,15 +195,15 @@ export const CommentsTextContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const AuthorText = styled.text`
+export const AuthorText = styled.h4`
   font-size: 22px;
-  margin-top: 10px;
+  margin: 10px 0 0 0;
   font-weight: bold;
 `;
 
-export const CommentText = styled.text`
+export const CommentText = styled.p`
   font-size: 18px;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 `;
 
 export const DeletePlaceButton = styled.button`
@@ -222,6 +224,16 @@ export const CancelButton = styled.button`
   border-radius: 4px;
 `;
 
+export const OkButton = styled.button`
+  background-color: white;
+  color: black;
+  padding: 12px 32px;
+  border: solid;
+  border-width: thin;
+  border-radius: 4px;
+  margin-top: 10px;
+`;
+
 export const PlaceDetailHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -236,15 +248,22 @@ export const DeleteButtonBox = styled.div`
   margin: 20px;
 `;
 
-export const DeleteTitle = styled.text`
+export const DeleteTitle = styled.h4`
+margin:0;
   display: flex;
   font-size: 22px;
   font-weight: bold;
 `;
 
-export const DeleteText = styled.text`
+export const DeleteText = styled.p`
   display: flex;
   font-size: 12px;
   margin-top: 4px;
   font-weight: bold;
+`;
+
+export const SuccessBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

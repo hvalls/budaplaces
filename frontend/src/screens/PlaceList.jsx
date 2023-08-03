@@ -2,24 +2,15 @@ import React, { useEffect, useState, useContext } from "react";
 import PlaceCard from "../components/PlaceCard";
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
-import Modal from "react-modal";
-import {
-  CancelButton,
-
-  PlaceBox,
-  SearchPlace,
-} from "../styles";
+import { PlaceBox, SearchPlace } from "../styles";
 import axios from "axios";
 import { GlobalContext } from "../context/GlobalState";
 import AddNewPlace from "./AddNewPlace.jsx";
 
 const PlaceList = () => {
-  const deleteMessage = "aa";
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState();
   const { isRestaurant, isAddNew } = useContext(GlobalContext);
-  const [isPlaceDeleted, seIsPlaceDeleted] = useState(false);
-
   const handleSearch = (e) => {
     console.log("e", e.target.value);
     const searchedPlaces = places.filter((place) => {
@@ -31,13 +22,6 @@ const PlaceList = () => {
     setFilteredPlaces(searchedPlaces);
     console.log("filteredPlaces", filteredPlaces);
   };
-
-  useEffect(() => {
-    if (deleteMessage) {
-      console.log(deleteMessage);
-      seIsPlaceDeleted(true);
-    }
-  }, [isPlaceDeleted, deleteMessage]);
 
   useEffect(() => {
     if (isRestaurant) {
@@ -78,32 +62,6 @@ const PlaceList = () => {
         ))}
       </PlaceBox>
       <AddNewPlace></AddNewPlace>
-      <Modal
-        style={{
-          content: {
-            overflow: "hidden",
-            borderRadius: "10px",
-            height: "120px",
-            width: "300px",
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-30%, -40%)",
-          },
-        }}
-        isOpen={false
-          //isPlaceDeleted
-        }
-        onRequestClose={() => seIsPlaceDeleted(false)}
-      >
-        
-
-        <CancelButton onClick={() => seIsPlaceDeleted(false)}>
-          Cancel
-        </CancelButton>
-      </Modal>
     </>
   );
 };

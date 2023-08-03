@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Modal from "react-modal";
 import SideBar from "../components/SideBar";
 import Comments from "../components/Comments";
+import SuccessIcon from "../icons/success.png";
 import {
   PlaceDetailBox,
   PlaceImageBox,
@@ -13,19 +14,20 @@ import {
   DeleteButtonBox,
   DeleteTitle,
   DeleteText,
+  SuccessBox,
+  OkButton,
 } from "../styles";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { GlobalContext } from "../context/GlobalState";
-//import { useHistory } from 'react-router-dom';
-
 
 const PlaceDetail = (props) => {
-    //const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const place = location.state;
   const [placeDetail, setPlaceDetail] = useState([]);
   const [isDeleteConfirmation, setIsDeleteConfirmation] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState(false);
   const { isRestaurant } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const PlaceDetail = (props) => {
           console.error(error);
         });
     }
-  }, [place, isRestaurant,]);
+  }, [place, isRestaurant]);
 
   const handleDelete = () => {
     setIsDeleteConfirmation(false);
@@ -59,7 +61,7 @@ const PlaceDetail = (props) => {
         .delete(`http://localhost:8080/restaurants/${place.id}`)
         .then((response) => {
           console.log(response.data);
-          //history.push("/");
+          setDeleteMessage(response.data.message);
         })
         .catch((error) => {
           console.error(error);
@@ -69,7 +71,7 @@ const PlaceDetail = (props) => {
         .delete(`http://localhost:8080/cafes/${place.id}`)
         .then((response) => {
           console.log(response.data);
-          //history.push("/");
+          setDeleteMessage(response.data.message);
         })
         .catch((error) => {
           console.error(error);
@@ -112,7 +114,8 @@ const PlaceDetail = (props) => {
       >
         <DeleteTitle>Delete {place.name}?</DeleteTitle>
         <DeleteText>
-          Are you sure you want to delete {place.name} permenantly? You can not undo this action.
+          Are you sure you want to delete {place.name} permenantly? You can not
+          undo this action.
         </DeleteText>
         <DeleteButtonBox>
           <CancelButton onClick={() => setIsDeleteConfirmation(false)}>
@@ -120,6 +123,31 @@ const PlaceDetail = (props) => {
           </CancelButton>
           <DeletePlaceButton onClick={handleDelete}>Delete</DeletePlaceButton>
         </DeleteButtonBox>
+      </Modal>
+      <Modal
+        style={{
+          content: {
+            overflow: "hidden",
+            borderRadius: "10px",
+            height: "120px",
+            width: "300px",
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
+          },
+        }}
+        isOpen={!!deleteMessage}
+        onRequestClose={() => navigate("/")}
+      >
+        <SuccessBox>
+          <img src={SuccessIcon} alt="Success Icon" width="48" height="48" />
+          <DeleteTitle>{deleteMessage}</DeleteTitle>
+
+          <OkButton onClick={() => navigate("/")}>OK</OkButton>
+        </SuccessBox>
       </Modal>
     </>
   );
