@@ -1,11 +1,18 @@
 import "./App.css";
-import PlaceList from "./screens/PlaceList.jsx";
+import { Routes, Route } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalState";
+import PlaceList from "./screens/PlaceList.jsx";
+import PlaceDetail from "./screens/PlaceDetail.jsx";
+import Modal from "react-modal";
 
 function App() {
+  Modal.setAppElement("#root");
   return (
     <GlobalProvider>
-      <PlaceList></PlaceList>
+      <Routes>
+        <Route path="/" element={<PlaceList />} />
+        <Route path="/details" element={<PlaceDetail />} />
+      </Routes>
     </GlobalProvider>
   );
 }

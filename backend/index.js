@@ -53,16 +53,23 @@ app.get('/cafes/:id', (req, res) => {
   return res.json(response);
 });
 
+app.get("/restaurants/:id", (req, res) => {
+  const restaurant = restaurants.find((r) => r.id === parseInt(req.params.id));
+  const detail = restaurantsDetail[restaurant.id];
+  const response = { ...restaurant, ...detail };
+  return res.json(response);
+});
+
 app.delete('/cafes/:id', (req, res) => {
   const id = req.params.id;
-  cafes = cafes.filter(c => c.id !== id);
-  return res.end();
+  cafes = cafes.filter(c => c.id !== parseInt(id));
+  return res.json({ message: 'Deleted successfully!' });
 });
 
 app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id;
-  restaurants = restaurants.filter(r => r.id !== id);
-  return res.end();
+  restaurants = restaurants.filter(r => r.id !== parseInt(id));
+  return res.json({ message: 'Deleted successfully!' });
 });
 
 const port = 8080;

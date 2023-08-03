@@ -1,14 +1,15 @@
 import React from "react";
-import { Card, PlaceImage } from "../styles";
+import { Link } from 'react-router-dom';
+import { Card, PlaceImage, PlaceNameText } from "../styles";
 
-const PlaceCard = ({ cafe }) => {
+const PlaceCard = ({ place }) => {
   return (
-    <>
+    <Link to="/details" state={place} style={{ textDecoration: "none" }}>
     <Card>
-      <PlaceImage src={cafe.pictureUrl} alt={cafe.name} />
-      <text>{cafe.name}</text>
+      <PlaceImage src={place.pictureUrl} alt={place.name} />
+      <PlaceNameText>{place.name}</PlaceNameText>
     </Card>
-    </>
+    </Link>
   );
 };
 
