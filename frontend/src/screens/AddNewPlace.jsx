@@ -10,7 +10,6 @@ const AddNewPlace = () => {
   const [pictureUrl, setPictureUrl] = useState("");
 
   const handleAdd = (e) => {
-    console.log(isRestaurant);
     if (isRestaurant) {
       axios
         .post("http://localhost:8080/restaurants", {

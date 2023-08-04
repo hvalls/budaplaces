@@ -1,7 +1,6 @@
 import React from "react";
 import {
   CommentsHeader,
-  CommentsBox,
   CommentsTextContainer,
   AuthorText,
   CommentText,
@@ -9,7 +8,7 @@ import {
 
 const Comments = ({ comments }) => {
   return (
-    <CommentsBox>
+    <>
       <CommentsHeader>Comments</CommentsHeader>
       <hr />
       {comments?.map((comment) => (
@@ -24,7 +23,7 @@ const Comments = ({ comments }) => {
           <hr />
         </>
       ))}
-    </CommentsBox>
+    </>
   );
 };
 

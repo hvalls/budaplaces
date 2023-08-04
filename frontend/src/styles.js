@@ -19,7 +19,6 @@ export const PlaceBox = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
   }
-  margin-left: 320px;
   margin-top: 30px;
   color: #fff;
 `;
@@ -39,6 +38,11 @@ export const PlaceImage = styled.img`
   max-width: 400px;
   height: auto;
   width: 100%;
+`;
+
+export const ScreenContainer = styled.div`
+    margin: 20px 20px 0 320px;
+display: flex;
 `;
 
 export const SideBarBox = styled.div`
@@ -65,7 +69,6 @@ export const MenuText = styled.h4`
 `;
 
 export const StyledHeader = styled.div`
-  margin-left: 320px;
   font-size: 24px;
 `;
 
@@ -115,7 +118,6 @@ export const SearchPlace = styled.input`
   height: 20px;
   width: 500px;
   margin-top: 5px;
-  margin-left: 320px;
   padding: 8px;
   text-align: center;
   font-size: 24px;
@@ -123,7 +125,7 @@ export const SearchPlace = styled.input`
 
   @media (max-width: 1024px) {
     flex: 1;
-    width: 46%;
+    width: 80%;
   }
 `;
 
@@ -132,20 +134,14 @@ export const PlaceNameText = styled.h4`
   color: white;
 `;
 
-export const PlaceDetailBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+export const ScreenBox = styled.div`
+  flex-grow: 1;
 `;
 
 export const PlaceImageBox = styled.div`
-  margin-top: 10px;
   color: #fff;
   position: relative;
-  top: 0;
-  left: 315px;
-  height: 40vh;
-  width: calc(100% - 315px);
+  height: 30vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -156,7 +152,6 @@ export const PlaceDetailImage = styled.img`
   height: 100%;
   object-fit: cover;
   position: relative;
-  margin-right: 25px;
 
   @media screen and (max-width: 768px) {
     height: 280px;
@@ -172,20 +167,12 @@ export const PlaceDetailImage = styled.img`
 `;
 
 export const PlaceNameDetailText = styled.h4`
-  position: relative;
-  margin: 0 0 0 320px;
   font-size: 25px;
   font-weight: bold;
 `;
-export const CommentsBox = styled.div`
-  margin-top: 120px;
-  margin-left: 320px;
-  position: relative;
-  width: 155vh;
-`;
 
 export const CommentsHeader = styled.h4`
-margin: 0;
+  margin: 0;
   font-size: 25px;
   font-weight: bold;
 `;
@@ -206,7 +193,7 @@ export const CommentText = styled.p`
   margin: 0 0 10px 0;
 `;
 
-export const DeletePlaceButton = styled.button`
+export const ConfirmDeletePlaceButton = styled.button`
   background-color: #b71c1c;
   margin-left: 4px;
   color: white;
@@ -215,11 +202,22 @@ export const DeletePlaceButton = styled.button`
   border-radius: 4px;
 `;
 
+export const DeletePlaceButton = styled.button`
+  background-color: #b71c1c;
+  color: white;
+  padding: 6px 14px 6px 12px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const CancelButton = styled.button`
   background-color: white;
   color: black;
   padding: 12px 32px;
-  border: solid;
+  border-style: solid;
   border-width: thin;
   border-radius: 4px;
 `;
@@ -238,7 +236,8 @@ export const PlaceDetailHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 25px 10px 0;
+  margin-top: 20px;
+  max-height: 30px;
 `;
 
 export const DeleteButtonBox = styled.div`
@@ -249,7 +248,7 @@ export const DeleteButtonBox = styled.div`
 `;
 
 export const DeleteTitle = styled.h4`
-margin:0;
+  margin: 0;
   display: flex;
   font-size: 22px;
   font-weight: bold;
@@ -266,4 +265,42 @@ export const SuccessBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const AddCommentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  position: relative;
+  align-items: flex-end;
+`;
+
+export const CommentAuthorInput = styled.input`
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 30px;
+  border-radius: 12px;
+  width: 99%;
+  border-style: solid;
+  border-color: black;
+`;
+export const CommentTextInput = styled.input`
+  padding-left: 10px;
+  margin: 12px 0;
+  height: 60px;
+  border-radius: 12px;
+  width: 99%;
+  border-style: solid;
+  border-color: black;
+`;
+
+export const PostButton = styled.button`
+  background-color: #5d9c59;
+  width: 90px;
+  margin-left: 4px;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
 `;

@@ -3,8 +3,9 @@ import Modal from "react-modal";
 import SideBar from "../components/SideBar";
 import Comments from "../components/Comments";
 import SuccessIcon from "../icons/success.png";
+import TrashIcon from "../icons/trash.png";
+import StarRatings from "react-rating-stars-component";
 import {
-  PlaceDetailBox,
   PlaceImageBox,
   PlaceDetailImage,
   PlaceNameDetailText,
@@ -16,10 +17,14 @@ import {
   DeleteText,
   SuccessBox,
   OkButton,
+  ConfirmDeletePlaceButton,
+  ScreenContainer,
+  ScreenBox,
 } from "../styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { GlobalContext } from "../context/GlobalState";
+import AddComment from "../components/AddComment";
 
 const PlaceDetail = (props) => {
   const navigate = useNavigate();
@@ -78,22 +83,31 @@ const PlaceDetail = (props) => {
         });
     }
   };
-
   return (
-    <>
+    <ScreenContainer>
       <SideBar></SideBar>
-      <PlaceDetailBox>
+      <ScreenBox>
         <PlaceImageBox>
           <PlaceDetailImage src={place.pictureUrl} alt={place.name} />
         </PlaceImageBox>
         <PlaceDetailHeader>
           <PlaceNameDetailText>{place.name}</PlaceNameDetailText>
           <DeletePlaceButton onClick={() => setIsDeleteConfirmation(true)}>
+            <img src={TrashIcon} alt="Success Icon" width="24" height="24" />
             Delete
           </DeletePlaceButton>
         </PlaceDetailHeader>
+        {placeDetail.rating && (
+            <StarRatings
+              count={5}
+              value={placeDetail.rating}
+              size={24}
+              activeColor="#ffd700"
+            />
+        )}
+        <AddComment></AddComment>
         <Comments comments={placeDetail.comments} />
-      </PlaceDetailBox>
+      </ScreenBox>
       <Modal
         style={{
           content: {
@@ -121,7 +135,9 @@ const PlaceDetail = (props) => {
           <CancelButton onClick={() => setIsDeleteConfirmation(false)}>
             Cancel
           </CancelButton>
-          <DeletePlaceButton onClick={handleDelete}>Delete</DeletePlaceButton>
+          <ConfirmDeletePlaceButton onClick={handleDelete}>
+            Delete
+          </ConfirmDeletePlaceButton>
         </DeleteButtonBox>
       </Modal>
       <Modal
@@ -149,7 +165,7 @@ const PlaceDetail = (props) => {
           <OkButton onClick={() => navigate("/")}>OK</OkButton>
         </SuccessBox>
       </Modal>
-    </>
+    </ScreenContainer>
   );
 };
 
